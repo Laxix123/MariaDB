@@ -1,0 +1,41 @@
+CREATE TABLE ciudad(
+	id_ciudad int AUTO_INCREMENT not null,
+    nombre Varchar(50) not null,
+    id_region INT,
+    PRIMARY KEY(id_ciudad)
+);
+
+Create TAble region (
+	id_region int AUTO_INCREMENT not null,
+	nombre Varchar(50) not null,
+  	id_pais int,
+  	PRIMARY KEY(id_region)
+);
+
+
+Create TAble pais (
+	id_pais int AUTO_INCREMENT not null,
+  	nombre Varchar(50) not null,
+  PRIMARY KEY(id_pais)
+);
+
+SELECT * from ciudad
+INSERT into ciudad (nombre , id_region ) VALUES("SANTIAGO",1);
+INSERT into ciudad (nombre , id_region ) VALUES("LAMPA",1);
+INSERT into ciudad (nombre , id_region ) VALUES("COLINA",1);
+INSERT into ciudad (nombre , id_region ) VALUES("PAINE",1);
+INSERT into ciudad (nombre , id_region ) VALUES("BUIN",1);
+INSERT into ciudad (nombre , id_region ) VALUES("RANCAGUA",2);
+INSERT into ciudad (nombre , id_region ) VALUES("RENGO",2);
+INSERT into ciudad (nombre , id_region ) VALUES("PICHILEMU",2);
+
+INSERT INTO region (nombre , id_pais) VALUES("REGION METROPOLITANA",1);
+INSERT INTO region (nombre , id_pais) VALUES("REGION DE OHIGGINS",1);
+select * FROM region 
+
+INSERT into pais (nombre) values("Chile");
+SELECT * from pais
+
+SELECT * from ciudad 
+	join region on ciudad.id_ciudad = region.id_region
+    join pais on region.id_pais = pais.id_pais
