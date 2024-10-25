@@ -1,0 +1,44 @@
+create table Cliente(
+  	rut varchar(12) not null,
+  	nombre varchar(50),
+  	apellido varchar(50),
+  	sexo CHARACTER,
+  	habilitado boolean,
+  	PRIMARY key (rut)
+);
+create table Pais(
+	id_Pais int AUTO_INCREMENT not null,
+  	nombre varchar(50) not null,
+  	PRIMARY key (id_Pais)
+);
+
+SELECT * FROM Cliente;
+SELECT * FROM Pais;
+
+INSERT into Cliente (rut, nombre, apellido, sexo, habilitado) VALUES ('1-9','Carlos','Fernandez','M',1);
+INSERT into Cliente (rut, nombre, apellido, sexo, habilitado) VALUES ('2-8','Martina','Quezada','F',1);
+INSERT into Cliente VALUES ('3-7','Rosa','Del Campo','F',0);
+INSERT into Cliente VALUES ('4-6','Elba','Lazo','F',1);
+
+
+INSERT into Pais (id_pais, nombre) VALUES (null, 'Chile');
+INSERT into Pais (id_pais, nombre) VALUES (null, 'Perú');
+INSERT into Pais (id_pais, nombre) VALUES (null, 'Brasil');
+INSERT into Pais (id_pais, nombre) VALUES (null, 'Argentina');
+INSERT into Pais (id_pais, nombre) VALUES (null, 'Bolivia');
+
+DELETE from Pais where id_Pais=1;
+
+TRUNCATE Pais
+
+ALTER TABLE Pais
+ADD COLUMN codigo_Pais varchar(10); 
+
+alter table Pais 
+add COLUMN Continente varchar(25);
+
+update Pais
+set codigo_pais = 'cl' WHERE id_pais = 1;
+
+ALTER table Pais
+DROP COLUMN continente
