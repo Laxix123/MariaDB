@@ -1,0 +1,105 @@
+create table Autor(
+	idAutor int not null AUTO_INCREMENT,
+  	nombre varchar (100),
+	apellido varchar (100),
+  	nacionalidad varchar (50),
+  	PRIMARY key (idAutor)
+);
+create table Libro(
+	idLibro int not null AUTO_INCREMENT,
+  	idAutor int not null, 
+  	titulo varchar (150),
+  	anioPublicacion YEAR,
+  	PRIMARY key (idLibro),
+	FOREIGN key (idAutor) REFERENCES Autor(idAutor)
+);
+CREATE Table Usuario(
+	idUsuario int not null AUTO_INCREMENT,
+  	nombre varchar (100),
+	email varchar (100),
+  	fechaRegistro DATe, 
+  	PRIMARY key (idUsuario)
+);
+create table Prestamo(
+	idPrestamo int not null AUTO_INCREMENT,
+  	idUsuario int not null,
+	idlibro int NOT null,
+  	fechaPrestamo date,
+  	fechaDevolucion date,
+  	PRIMARY key (idPrestamo),
+  	FOREIGN key (idUsuario) REFERENCES Usuario(idUsuario),
+	FOREIGN KEY (idLibro) REFERENCES Libro(idLibro)
+);
+
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Carlos', 'Fernandez', 'Chile');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Maria', 'Gomez', 'España');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Juan', 'Perez', 'Argentina');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Ana', 'Lopez', 'México');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Pedro', 'Martinez', 'Colombia');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Lucía', 'Rodriguez', 'Perú');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Jorge', 'Sánchez', 'Uruguay');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Isabel', 'Ramirez', 'Venezuela');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Andrés', 'Hernandez', 'Ecuador');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Sofia', 'Gonzalez', 'Chile');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Felipe', 'Diaz', 'Argentina');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Ricardo', 'Castro', 'Bolivia');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Clara', 'Morales', 'Perú');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Felisa', 'Jimenez', 'México');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Miguel', 'Cortes', 'Colombia');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Marcos', 'Alvarez', 'España');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Paola', 'Fernandez', 'Venezuela');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Raúl', 'Paredes', 'Chile');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Verónica', 'Vargas', 'Uruguay');
+INSERT into Autor (nombre, apellido, nacionalidad) VALUES ('Eugenia', 'Serrano', 'Ecuador');
+
+select * from Autor
+
+INSERT INTO Libro (titulo, aniopublicacion, idautor) VALUES
+('Black Clover', 2006, 1),
+('Naruto', 1999, 2),
+('One Piece', 1997, 3),
+('Attack on Titan', 2009, 4),
+('Demon Slayer', 2016, 5),
+('My Hero Academia', 2014, 6),
+('Bleach', 2001, 7),
+('Tokyo Ghoul', 2011, 8),
+('Death Note', 2003, 9),
+('Fairy Tail', 2006, 10),
+('Dragon Ball', 1984, 11),
+('Fullmetal Alchemist', 2001, 12),
+('Hunter x Hunter', 1998, 13),
+('Yu Yu Hakusho', 1992, 14),
+('One Punch Man', 2009, 15),
+('JoJo’s Bizarre Adventure', 1987, 16),
+('The Promised Neverland', 2016, 17),
+('Black Lagoon', 2002, 18),
+('Bleach: Burn the Witch', 2020, 19),
+('Vinland Saga', 2005, 20);
+SELECT * from Libro
+INSERT INTO Usuario (nombre, email, fechaRegistro) VALUES
+('Carlos Fernandez', 'carlos.fernandez@email.com', '2023-01-15'),
+('Maria Gomez', 'maria.gomez@email.com', '2022-05-10'),
+('Juan Perez', 'juan.perez@email.com', '2021-09-23'),
+('Ana Lopez', 'ana.lopez@email.com', '2024-02-18'),
+('Pedro Martinez', 'pedro.martinez@email.com', '2020-12-05'),
+('Lucía Rodriguez', 'lucia.rodriguez@email.com', '2019-08-12'),
+('Jorge Sánchez', 'jorge.sanchez@email.com', '2023-04-03'),
+('Isabel Ramirez', 'isabel.ramirez@email.com', '2022-11-27'),
+('Andrés Hernandez', 'andres.hernandez@email.com', '2021-07-19'),
+('Sofia Gonzalez', 'sofia.gonzalez@email.com', '2020-01-22'),
+('Felipe Diaz', 'felipe.diaz@email.com', '2023-05-14'),
+('Ricardo Castro', 'ricardo.castro@email.com', '2022-10-29'),
+('Clara Morales', 'clara.morales@email.com', '2024-01-09'),
+('Felisa Jimenez', 'felisa.jimenez@email.com', '2021-03-26'),
+('Miguel Cortes', 'miguel.cortes@email.com', '2023-06-11'),
+('Marcos Alvarez', 'marcos.alvarez@email.com', '2018-11-03'),
+('Paola Fernandez', 'paola.fernandez@email.com', '2022-03-14'),
+('Raúl Paredes', 'raul.paredes@email.com', '2020-04-22'),
+('Verónica Vargas', 'veronica.vargas@email.com', '2024-07-25'),
+('Eugenia Serrano', 'eugenia.serrano@email.com', '2021-09-17');
+
+SELECT * from Usuario
+INSERT INTO Prestamo (idUsuario, idLibro, fechaPrestamo, fechaDevolucion) 
+VALUES (1, 5, '2024-10-01', '2024-10-15');
+
+SELECT * from Prestamo 
