@@ -1,0 +1,128 @@
+CREATE TABLE autores(
+id_autor int primary key AUTO_INCREMENT,
+  nombre varchar(100),
+  apellido varchar(100),
+  nacionalidad varchar(50)
+)
+
+CREATE TABLE libros(
+id_libro int PRIMARY KEY AUTO_INCREMENT,
+  titulo varchar(150),
+  anio_publicacion YEAR,
+  id_autor INT,
+  CONSTRAINT FK_idAutor FOREIGN  KEY (id_autor) REFERENCES autores(id_autor)
+)
+
+CREATE TABLE usuarios(
+id_usuario int PRIMARY KEY AUTO_INCREMENT,
+  nombre varchar(100),
+  email varchar(100),
+  fecha_registro DATETIME
+)
+
+CREATE TABLE prestamos(
+id_prestamo int PRIMARY KEY AUTO_INCREMENT,
+  id_usuario int,
+  id_libro int, 
+  fecha_prestamo datetime,
+  fecha_devolucion datetime,
+  CONSTRAINT FK_idUsuario FOREIGN  KEY (id_usuario) REFERENCES usuarios(id_usuario),
+    CONSTRAINT FK_idLibro FOREIGN  KEY (id_libro) REFERENCES libros(id_libro)
+)
+
+/* INSERCION DE DATOS */
+
+INSERT INTO autores (nombre, apellido, nacionalidad) VALUES ('Gabriel', 'García Márquez', 'Colombiana');
+INSERT INTO autores (nombre, apellido, nacionalidad) VALUES ('Isabel', 'Allende', 'Chilena');
+INSERT INTO autores (nombre, apellido, nacionalidad) VALUES ('Mario', 'Vargas Llosa', 'Peruana');
+INSERT INTO autores (nombre, apellido, nacionalidad) VALUES ('Pablo', 'Neruda', 'Chilena');
+INSERT INTO autores (nombre, apellido, nacionalidad) VALUES ('Jorge', 'Luis Borges', 'Argentina');
+INSERT INTO autores (nombre, apellido, nacionalidad) VALUES ('Octavio', 'Paz', 'Mexicana');
+INSERT INTO autores (nombre, apellido, nacionalidad) VALUES ('Carlos', 'Fuentes', 'Mexicana');
+INSERT INTO autores (nombre, apellido, nacionalidad) VALUES ('Julio', 'Cortázar', 'Argentina');
+INSERT INTO autores (nombre, apellido, nacionalidad) VALUES ('Marquez', 'Eduardo', 'Mexicana');
+INSERT INTO autores (nombre, apellido, nacionalidad) VALUES ('Laura', 'Esquivel', 'Mexicana');
+SELECT * from autores;
+
+INSERT INTO libros (titulo, anio_publicacion, id_autor) VALUES ('Cien años de soledad', 1967, 1);
+INSERT INTO libros (titulo, anio_publicacion, id_autor) VALUES ('La casa de los espíritus', 1982, 2);
+INSERT INTO libros (titulo, anio_publicacion, id_autor) VALUES ('La ciudad y los perros', 1963, 3);
+INSERT INTO libros (titulo, anio_publicacion, id_autor) VALUES ('Veinte poemas de amor y una canción desesperada', 1924, 4);
+INSERT INTO libros (titulo, anio_publicacion, id_autor) VALUES ('Ficciones', 1944, 5);
+INSERT INTO libros (titulo, anio_publicacion, id_autor) VALUES ('El laberinto de la soledad', 1950, 6);
+INSERT INTO libros (titulo, anio_publicacion, id_autor) VALUES ('La región más transparente', 1958, 7);
+INSERT INTO libros (titulo, anio_publicacion, id_autor) VALUES ('Rayuela', 1963, 8);
+INSERT INTO libros (titulo, anio_publicacion, id_autor) VALUES ('Como agua para chocolate', 1989, 9);
+INSERT INTO libros (titulo, anio_publicacion, id_autor) VALUES ('El otoño del patriarca', 1975, 1);
+select * from libros;
+
+INSERT INTO usuarios (nombre, email, fecha_registro) VALUES ('Juan Pérez', 'juan.perez@example.com', '2024-11-06 09:30:00');
+INSERT INTO usuarios (nombre, email, fecha_registro) VALUES ('María González', 'maria.gonzalez@example.com', '2024-11-06 09:45:00');
+INSERT INTO usuarios (nombre, email, fecha_registro) VALUES ('Carlos López', 'carlos.lopez@example.com', '2024-11-06 10:00:00');
+INSERT INTO usuarios (nombre, email, fecha_registro) VALUES ('Ana Rodríguez', 'ana.rodriguez@example.com', '2024-11-06 10:15:00');
+INSERT INTO usuarios (nombre, email, fecha_registro) VALUES ('Pedro Fernández', 'pedro.fernandez@example.com', '2024-11-06 10:30:00');
+INSERT INTO usuarios (nombre, email, fecha_registro) VALUES ('Laura Martínez', 'laura.martinez@example.com', '2024-11-06 10:45:00');
+INSERT INTO usuarios (nombre, email, fecha_registro) VALUES ('Luis Sánchez', 'luis.sanchez@example.com', '2024-11-06 11:00:00');
+INSERT INTO usuarios (nombre, email, fecha_registro) VALUES ('Elena García', 'elena.garcia@example.com', '2024-11-06 11:15:00');
+INSERT INTO usuarios (nombre, email, fecha_registro) VALUES ('José Díaz', 'jose.diaz@example.com', '2024-11-06 11:30:00');
+INSERT INTO usuarios (nombre, email, fecha_registro) VALUES ('Carmen Jiménez', 'carmen.jimenez@example.com', '2024-11-06 11:45:00');
+select * from usuarios;
+
+-- Préstamos de ejemplo
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (1, 1, '2024-11-01 10:00:00', '2024-11-15 10:00:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (2, 2, '2024-11-02 11:00:00', '2024-11-16 11:00:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (3, 3, '2024-11-03 12:00:00', '2024-11-17 12:00:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (4, 4, '2024-11-04 13:00:00', '2024-11-18 13:00:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (5, 5, '2024-11-05 14:00:00', '2024-11-19 14:00:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (6, 6, '2024-11-06 15:00:00', '2024-11-20 15:00:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (7, 7, '2024-11-07 16:00:00', '2024-11-21 16:00:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (8, 8, '2024-11-08 17:00:00', '2024-11-22 17:00:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (9, 9, '2024-11-09 18:00:00', '2024-11-23 18:00:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (10, 10, '2024-11-10 19:00:00', '2024-11-24 19:00:00');
+
+-- Continuando con más préstamos
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (1, 2, '2024-11-11 10:30:00', '2024-11-25 10:30:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (2, 3, '2024-11-12 11:30:00', '2024-11-26 11:30:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (3, 4, '2024-11-13 12:30:00', '2024-11-27 12:30:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (4, 5, '2024-11-14 13:30:00', '2024-11-28 13:30:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (5, 6, '2024-11-15 14:30:00', '2024-11-29 14:30:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (6, 7, '2024-11-16 15:30:00', '2024-11-30 15:30:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (7, 8, '2024-11-17 16:30:00', '2024-12-01 16:30:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (8, 9, '2024-11-18 17:30:00', '2024-12-02 17:30:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (9, 10, '2024-11-19 18:30:00', '2024-12-03 18:30:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (10, 1, '2024-11-20 19:30:00', '2024-12-04 19:30:00');
+
+-- Más préstamos aleatorios
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (1, 3, '2024-11-21 10:45:00', '2024-12-05 10:45:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (2, 4, '2024-11-22 11:45:00', '2024-12-06 11:45:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (3, 5, '2024-11-23 12:45:00', '2024-12-07 12:45:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (4, 6, '2024-11-24 13:45:00', '2024-12-08 13:45:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (5, 7, '2024-11-25 14:45:00', '2024-12-09 14:45:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (6, 8, '2024-11-26 15:45:00', '2024-12-10 15:45:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (7, 9, '2024-11-27 16:45:00', '2024-12-11 16:45:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (8, 10, '2024-11-28 17:45:00', '2024-12-12 17:45:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (9, 1, '2024-11-29 18:45:00', '2024-12-13 18:45:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (10, 2, '2024-11-30 19:45:00', '2024-12-14 19:45:00');
+
+-- Últimos préstamos
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (1, 5, '2024-12-01 10:00:00', '2024-12-15 10:00:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (2, 6, '2024-12-02 11:00:00', '2024-12-16 11:00:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (3, 7, '2024-12-03 12:00:00', '2024-12-17 12:00:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (4, 8, '2024-12-04 13:00:00', '2024-12-18 13:00:00');
+INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) VALUES (5, 9, '2024-12-05 14:00:00', '2024-12-19 14:00:00');
+
+select * from prestamos;
+
+/* SELECT CON JOINS */
+
+SELECT usuarios.nombre as nombre_usuario, libros.titulo as titulo_libro FROM usuarios
+JOIN prestamos ON usuarios.id_usuario = prestamos.id_usuario  
+    JOIN libros ON prestamos.id_libro = libros.id_libro
+select titulo as titulo_libro, CONCAT(nombre," ", apellido) as nombre_autor from libros
+JOIN autores ON libros.id_autor = autores.id_autor
+/* ACTUALIZAR CORREO */ 
+UPDATE usuarios set email="nuevo@correo.cl" where id_usuario=1
+select * from usuarios
+
+delete from prestamos where id_prestamo = 10
+SELECT * from prestamos
